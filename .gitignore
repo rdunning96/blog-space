@@ -26,6 +26,8 @@ yarn-error.log*
 
 # compiled output
 server/node_modules
+server/dist
+*.zip
 # Logs
 logs
 *.log
@@ -101,3 +103,4 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+.vercel
