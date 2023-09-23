@@ -1,0 +1,1 @@
+export { blogs } from './mock_blogs';
