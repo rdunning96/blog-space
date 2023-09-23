@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { BlogService } from '../../services/blog.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
+  public blogs: any;
   public testBlogIntro = `
     <h1>Introduction</h1>
     <p>Hello and welcome to my AI Mind Map Blog Portfolio! This space serves as a personal canvas where
@@ -29,9 +31,13 @@ export class HomeComponent implements OnInit {
         other advanced technologies. Links to the original conversations that generated the content will
         be provided for educational purposes.</p>
   `;
-  constructor() { }
+  constructor(private blogService: BlogService) { }
 
   ngOnInit(): void {
+    this.blogService.getPosts().subscribe((data: any) => {
+      this.blogs = data;
+      console.log(data);
+    });
   }
 
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+/*import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -13,3 +13,23 @@ export class BlogService {
     return this.http.get(`${this.baseUrl}/blog`);
   }
 }
+*/
+
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Post } from '../models/post.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class BlogService {
+  private apiUrl = 'http://localhost:3000/blog';
+
+  constructor(private http: HttpClient) { }
+
+  getPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(this.apiUrl);
+  }
+}
+
